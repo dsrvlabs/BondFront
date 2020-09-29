@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="swap">
+        <img class="abstract" src="/assets/yte.svg">
+        <h1 class="title">yNear to Ethereum</h1>
+        <dsrv-input (value)="getAmount($event)" label="yNear" balance="{{tbalance}}" connect="{{connected()}}">
+        </dsrv-input>
+        <br />
+        <dsrv-input (value)="getAddress($event)" label="Ethereum Address" balance="{{address}}" connect="
+            {{connected()}}">
+        </dsrv-input>
+        <dsrv-btn routerLink="/nte/{{address}}/{{amount}}" (clicked)="transfer()" label="🌈 Transfer"></dsrv-btn>
+    </div>
+</div>

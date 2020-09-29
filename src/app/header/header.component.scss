@@ -1,0 +1,194 @@
+:host {
+    display: block;
+    visibility: visible;
+    pointer-events: auto;
+    height: 90px;
+    margin-bottom: 2rem;
+    background: #FFFFFF;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90px;
+
+    > .container {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        width: 100%;
+        max-width: 960px;
+        height: 100%;
+        margin: 0 2rem;
+
+        > .left {
+            display: flex;
+            width: 100px;
+            justify-content: space-around;
+            align-content: center;
+            align-items: center;
+        }
+
+        > .middle {
+            display: flex;
+            width: 500px;
+            justify-content: space-around;
+            align-content: center;
+            align-items: center;
+            > a {
+                display: flex;
+                font-family: Noto Sans KR;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 23px;
+                /* identical to box height */
+                text-align: center;
+    
+                /* f_dgray */
+                color: #5F6877;
+                text-decoration: none;
+                &:link, &:visited, &hover {
+                    text-decoration: none;
+                }
+    
+                &.active {
+                    color: #1C2432;
+                    border-bottom: 5px solid #0064FF;
+                }
+            }
+        }
+
+        > .right {
+            display: flex;
+            width: 150px;
+            justify-content: space-around;
+            align-content: center;
+            align-items: center;
+
+            button{
+                font-family: Noto Sans KR;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 20px;
+                color: #FFFFFF;
+                background: #0064FF;
+                padding: 10px 20px;
+                border-radius: 21px;
+                border: none;
+            }
+        }
+    }
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    width: 100%;
+    height: 40px;
+    background: #0064FF;
+
+    > .container {
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        max-width: 960px;
+
+        > .label {
+            display: inline-block;
+            font-family: Noto Sans KR;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 9px;
+            /* identical to box height */
+
+            /* white */
+            color: #FFFFFF;
+            padding: 0 10px;
+            height: 9px;
+            border-right: 1px solid #4C92FF;
+        }
+
+        > .near {
+            padding: 0 10px;
+            display: inline-flex;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            line-height: 15px;
+            text-align: right;
+            color: #FFFFFF;
+            
+            &::after {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 11px;
+                line-height: 15px;
+                /* identical to box height */
+                text-align: right;
+
+                /* p_80 */
+                color: #99C1FF;
+                padding: 0 5px;
+                content: 'Near';
+            }
+        }
+
+        > .ynear {
+            padding: 0 10px;
+            display: inline-flex;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            line-height: 15px;
+            text-align: right;
+            color: #FFFFFF;
+            
+            &::after {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 11px;
+                line-height: 15px;
+                /* identical to box height */
+                text-align: right;
+
+                /* p_80 */
+                color: #99C1FF;
+                padding: 0 5px;
+                content: 'yNear';
+            }
+        }
+
+        > .account {
+            padding-right: 3rem;
+            margin-left: auto;
+            font-family: Noto Sans KR;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            /* identical to box height */
+
+            /* white */
+            color: #FFFFFF;
+
+            > a:link, a:visited, a:hover {
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+        }
+    }
+}

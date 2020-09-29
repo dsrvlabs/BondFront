@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="swap">
+        <img class="abstract" src="/assets/nfy.svg">
+        <h1 class="title">Near for yNear</h1>
+        <dsrv-input (value)="getAmount($event)" label="Near" balance="{{balance()}}" connect="{{connected()}}">
+        </dsrv-input>
+        <dsrv-btn (clicked)="tokenize()" label="Swap Near for yNear"></dsrv-btn>
+    </div>
+</div>

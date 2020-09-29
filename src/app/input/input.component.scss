@@ -1,0 +1,99 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    > .info {
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        width: 450px;
+
+        > .name {
+            font-family: Noto Sans KR;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 23px;
+            /* identical to box height */
+            letter-spacing: -0.03em;
+    
+            color: #1C2432;
+        }
+
+        > .balance {
+            font-family: Noto Sans KR;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 17px;
+            /* identical to box height */
+            letter-spacing: -0.02em;
+
+            margin-left: auto;
+            color: #5F6877;
+
+            &::before {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 11px;
+                line-height: 17px;
+                /* identical to box height, or 155% */
+                text-align: center;
+                letter-spacing: -0.03em;
+
+                /* f_gray */
+                color: #8B8F97;
+                content: 'Balance ';
+            }
+
+            &::after {
+                font-family: Noto Sans KR;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 17px;
+                /* identical to box height */
+                text-align: center;
+                letter-spacing: -0.04em;
+
+                /* f_gray */
+                color: #8B8F97;
+                content: " " attr(data-after);
+            }
+        }
+    }
+
+
+    > input {
+        display: flex;
+        /* bg_basic */
+        background: #F0F4FA;
+        /* bg_line */
+        border: 1px solid #D6E0EC;
+        box-sizing: border-box;
+        border-radius: 6px;
+        height: 55px;
+        width: 450px;
+        padding: 1rem;
+
+        color: #1C2432;
+
+        &:focus {
+            border: 1px solid #0064FF;
+            color: #0064FF;
+        }
+
+        &::placeholder {
+            color: #B5B8BD;
+        }
+    }
+}

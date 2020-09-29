@@ -1,7 +1,6 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import * as nearAPI from 'near-api-js';
 import { WalletConnection, utils } from 'near-api-js';
-import Big from 'big.js';
 import BN from 'bn.js';
 
 interface IUSER {
@@ -9,18 +8,19 @@ interface IUSER {
   balance: any;
 }
 
-const DEPOSIT_OF_GAS = new BN('1000000000000000000').toString();
+// 가스가 너무 높아서 안되는 거였음... ㅠㅠ
+const DEPOSIT_OF_GAS = new BN('300000000000000');
 
 @Injectable({
   providedIn: 'root'
 })
 export class NearService {
   nearConfig = {
-    networkId: 'default',
+    networkId: 'testnet',
     nodeUrl: 'https://rpc.testnet.near.org',
     contractName: '',
     walletUrl: 'https://wallet.testnet.near.org',
-    helperUrl: 'https://helper.testnet.near.org'
+    helperUrl: 'https://helper.testnet.near.org',
   };
 
   near: any;
@@ -38,7 +38,6 @@ export class NearService {
     @Inject('contractName') @Optional() private contractName: string
   ) {
     this.nearConfig.contractName = contractName;
-    console.log(this.nearConfig.contractName);
     this.currentUser.accountId = '';
     this.currentUser.balance = '';
   }
@@ -91,7 +90,6 @@ export class NearService {
     try {
       this.totalSupply = await this.contract.get_total_supply();
     } catch (err) {
-      console.log(err);
       this.totalSupply = '0';
     }
   }
@@ -105,13 +103,30 @@ export class NearService {
   }
 
   async tokenize(amount: string): Promise<void> {
-    // const bufferOriginal = Buffer.from({}.toString());
-    // console.log(DEPOSIT_OF_GAS);
-    // console.log(Big(amount || '0').times(10 ** 24).toFixed());
+    const tmp = new BN(amount || '0').mul(new BN('10').pow(new BN('24')));
+    // console.log(tmp.toString());
+    await this.wallet.account().functionCall(this.nearConfig.contractName, 'deposit', undefined, DEPOSIT_OF_GAS, tmp);
+    // const receipt = await this.contract.deposit({}, DEPOSIT_OF_GAS, new BN(amount || '0').mul(new BN('10').pow(new BN('24'))));
+  }
 
-    // console.log(new BN('10e+24').toString());
-    const AMOUNT = new BN(amount || '0').muln(10).muln(24).toString();
-    await this.contract.deposit({}, DEPOSIT_OF_GAS, Big(amount || '0').times(10 ** 24).toFixed());
+  async transfer(amount: string): Promise<void> {
+    const tmp = new BN(amount || '0');
+
+    await this.contract.transfer({
+      // tslint:disable-next-line: object-literal-key-quotes
+      'new_owner_id': 'lock.dsrvlabs.testnet',
+      // tslint:disable-next-line: object-literal-key-quotes
+      'amount': tmp.toString()
+    },
+      DEPOSIT_OF_GAS,
+      new BN('1330000000000000000000000')
+    );
+  }
+
+  async latestTxid(): Promise<string> {
+    const tmp = await this.wallet.account().getAccountDetails();
+    console.log(tmp);
+    return '';
   }
 
   isConnected(): boolean {

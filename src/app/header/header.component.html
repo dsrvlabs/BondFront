@@ -1,0 +1,26 @@
+<nav>
+    <div class="container">
+        <div class="left">
+            <h1>yNear</h1>
+        </div>
+        <div class="middle">
+            <a routerLink="/nfy" routerLinkActive="active">Near for yNear</a>
+            <a routerLink="/yfn" routerLinkActive="active">yNear for Near</a>
+            <a routerLink="/nte" routerLinkActive="active">yNear to Ethereum</a>
+        </div>
+        <div class="right">
+            <button *ngIf="!connected()" (click)="connectWallet()">Connect Wallet</button>
+            <button *ngIf="connected()" (click)="disconnectWallet()">Disconnect Wallet</button>
+        </div>
+    </div>
+</nav>
+
+<div *ngIf="connected()" class="info">
+    <div class="container">
+        <span class="label">My Asset</span>
+        <span class="near">{{ balance() }}</span>
+        <span class="ynear">{{ tbalance }}</span>
+        <span class="account"><a href="https://explorer.testnet.near.org/accounts/{{ accountId() }}"
+                target="_blank">{{ accountId() }}</a></span>
+    </div>
+</div>

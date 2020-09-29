@@ -1,15 +1,2 @@
-<div *ngIf="connected()">{{ accountId() }}</div>
-<button *ngIf="!connected()" (click)="connectWallet()">Connect Wallet</button>
-<button *ngIf="connected()" (click)="disconnectWallet()">Disconnect Wallet</button>
-
-<h2>Near to bNear</h2>
-<div *ngIf="connected()">My Near Balance: {{ balance() }}</div>
-<label for="ntb">amount: </label> <input id="ntb" value="{{ntbamount}}" />
-<button (click)="tokenize()">tokenize</button>
-
-<h2>bNear to Near</h2>
-<div *ngIf="connected()">bNear Total Balance: {{ totalSupply }}</div>
-<div *ngIf="connected()">My bNear Balance: {{ tbalance }}</div>
-<label for="btn">amount: </label> <input id="btn" value="{{btnamount}}" />
-<button (click)="burn()">burn</button>
-<!-- <router-outlet></router-outlet> -->
+<dsrv-header></dsrv-header>
+<router-outlet></router-outlet>
